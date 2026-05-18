@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   checks: write
 
 concurrency:
@@ -41,16 +42,19 @@ jobs:
       - name: Prettier check
         run: npm run format:check
 
+      - name: ESLint check
+        run: npm run lint
+      
       - name: Test
         run: npm run test:ci
 
-      - name: Publish Test Report
-        uses: dorny/test-reporter@v1
-        if: always()
+      - name: Test Report
+        uses: dorny/test-reporter@v3
+        if: ${{ !cancelled() }}       
         with:
-            name: Test Results
-            path: test-results/junit.xml
-            reporter: java-junit
+          name: JEST Tests            
+          path: reports/jest-*.xml    
+          reporter: jest-junit        
 
       - name: Compute image tag
         id: meta
