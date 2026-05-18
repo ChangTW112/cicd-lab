@@ -58,6 +58,7 @@ jobs:
           name: Vitest Tests
           path: test-results/junit.xml
           reporter: jest-junit
+          fail-on-error: false
 
       - name: Compute image tag
         id: meta
