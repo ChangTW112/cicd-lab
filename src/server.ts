@@ -4,6 +4,8 @@ const app = buildApp({ logger: true });
 const port = Number(process.env.PORT || 3000);
 const host = process.env.HOST || '0.0.0.0';
 
+const unusedForLintDemo : 'this variable is not used';
+
 async function start() {
   try {
     await app.listen({ port, host });
