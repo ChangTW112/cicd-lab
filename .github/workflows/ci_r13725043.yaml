@@ -53,7 +53,7 @@ jobs:
         if: ${{ !cancelled() }}       
         with:
           name: JEST Tests            
-          path: reports/jest-*.xml    
+          path: test-results/junit.xml   
           reporter: jest-junit        
 
       - name: Compute image tag
