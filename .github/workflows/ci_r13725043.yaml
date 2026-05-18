@@ -55,7 +55,7 @@ jobs:
         uses: dorny/test-reporter@v3
         if: ${{ !cancelled() && hashFiles('test-results/junit.xml') != '' }}
         with:
-          name: JEST Tests
+          name: Vitest Tests
           path: test-results/junit.xml
           reporter: jest-junit
 
