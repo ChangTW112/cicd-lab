@@ -36,6 +36,9 @@ jobs:
         run: npm ci
 
       # add your steps here, e.g. lint, test, build etc.
+      - name: Clean previous test results
+        run: rm -rf test-results
+      
       - name: TypeScript typecheck
         run: npm run typecheck
 
@@ -50,7 +53,7 @@ jobs:
 
       - name: Test Report
         uses: dorny/test-reporter@v3
-        if: ${{ !cancelled() }}       
+        if: ${{ !cancelled() && hashFiles('test-results/junit.xml') != '' }}     
         with:
           name: JEST Tests            
           path: test-results/junit.xml   
