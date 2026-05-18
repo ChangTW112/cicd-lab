@@ -14,7 +14,8 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test:ci": "vitest run --reporter=default --reporter=junit --outputFile=./test-results/junit.xml"
   },
   "engines": {
     "node": ">=22 <25"
